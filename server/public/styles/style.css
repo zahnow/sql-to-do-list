@@ -1,0 +1,11 @@
+:root {
+
+}
+
+body {
+    background-color: aliceblue;
+}
+
+.complete {
+    text-decoration: line-through;
+}

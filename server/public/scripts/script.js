@@ -41,7 +41,15 @@ function deleteTodo(event) {
 }
 
 function completeTodo(event) {
-    console.log('clicked complete');
+    const id = $(event.target).data('id');
+    $.ajax({
+        method: 'PUT',
+        url: `/todos/complete/${id}`
+    }).then((response) => {
+        refreshTodos();
+    }).catch((error) => {
+        console.log('Error completing todo:', error);
+    });
 }
 
 function refreshTodos() {
@@ -51,10 +59,14 @@ function refreshTodos() {
         url: "/todos"
     }).then((response) => {
         for(let item of response) {
+            let todoSummary = `<td>${item.summary}</td>`;
+            if (item.is_complete) {
+                todoSummary = `<td class="complete">${item.summary}</td>`;
+            }
             $('#todos-table').append(`
                 <tr>
-                    <td><button class='complete-button'>Complete</button></td>
-                    <td>${item.summary}</td>
+                    <td><button class='complete-button' data-id="${item.id}">Complete</button></td>
+                    ${todoSummary}
                     <td><button class='delete-button' data-id="${item.id}">Delete</button></td>
                 </tr>
             `)
