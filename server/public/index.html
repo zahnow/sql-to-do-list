@@ -5,8 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <script src="./vendor/jquery.js"></script>
+    <script src="./scripts/script.js"></script>
 </head>
 <body>
-    <h1>To Do List</h1>
+    <h1>To-Dos</h1>
+    <div class="primary-container">
+        <h2>Add To-Do</h2>
+        <input id="summary-input" />
+        <button id="add-to-do">Add To-Do</button>
+    </div>
+    <div class="primary-container">
+        <h2>List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Summary</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="todos-table">
+    
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
