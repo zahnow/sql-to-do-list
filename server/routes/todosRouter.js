@@ -48,4 +48,21 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         });
 })
+
+router.put('/complete/:id', (req, res) => {
+    console.log('PUT request on /todos on index', req.params.id);
+    const queryString = `
+        UPDATE "todos"
+        SET "is_complete" = NOT is_complete
+        WHERE "id" = $1;
+    `
+    pool.query(queryString, [req.params.id])
+        .then((response) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('Error updating in todos:', error);
+            res.sendStatus(500);
+        })
+})
 module.exports = router;
