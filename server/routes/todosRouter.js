@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
     const queryString = `
         INSERT INTO "todos" ("summary")
         VALUES ($1);
-    `
+    `;
     pool.query(queryString, [req.body.summary])
         .then((response) => {
             res.sendStatus(201);
@@ -33,4 +33,19 @@ router.post('/', (req, res) => {
         });
 });
 
+router.delete('/:id', (req, res) => {
+    console.log('DELETE request on /todos on index:', req.params.id);
+    const queryString = `
+        DELETE FROM "todos"
+        WHERE id=$1;
+    `;
+    pool.query(queryString, [req.params.id])
+        .then((response) => {
+            res.sendStatus(204);
+        })
+        .catch((error) => {
+            console.log('Error deleting from todos:', error);
+            res.sendStatus(500);
+        });
+})
 module.exports = router;
