@@ -6,7 +6,15 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('GET request on /todo');
-    res.sendStatus(200);
+    const queryString = `SELECT * FROM "todos"`;
+    pool.query(queryString)
+        .then((response) => {
+            res.send(response.rows);
+        })
+        .catch((error) => {
+            console.log('Error getting todos:', error);
+            res.sendStatus(500);
+        });
 });
 
 module.exports = router;
