@@ -1,9 +1,8 @@
-# Project Name
+# SQL To-Do List
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+This is a weekend project to build a simple to-do app using jQuery, Express, Node, and Postgres. 
 
-## Description
+## Usage
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+* Add to-do's using the "Add To-Do" section.
+* Todo's can be completed using the box on the left of the row, or deleted by clicking the trash can.
