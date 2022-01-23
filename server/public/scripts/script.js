@@ -54,6 +54,11 @@ function completeTodo(event) {
     });
 }
 
+
+// refreshTodos should be fairly straightforward, we're throwing each to-do 
+// into a row in our table. The only interesting thing here is we're checking
+// if the the item is complete and swapping our icon to a checked one, and
+// adding the 'complete' class so we add a strikethrough in css.
 function refreshTodos() {
     $('#todos-list').empty();
     $.ajax({

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const pool = require('../modules/pool');
-//TODO
 
 router.get('/', (req, res) => {
     console.log('GET request on /todos');
@@ -51,6 +50,8 @@ router.delete('/:id', (req, res) => {
         });
 })
 
+// putting our put route for completing a to-do at '/complete' just in
+// case we add some other editing options later.
 router.put('/complete/:id', (req, res) => {
     console.log('PUT request on /todos on index', req.params.id);
     const queryString = `
@@ -67,4 +68,5 @@ router.put('/complete/:id', (req, res) => {
             res.sendStatus(500);
         })
 })
+
 module.exports = router;
