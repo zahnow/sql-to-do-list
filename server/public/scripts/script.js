@@ -30,14 +30,16 @@ function addTodo() {
 function deleteTodo(event) {
     const id = $(event.target).data('id');
     console.log('clicked delete on id:', id);
-     $.ajax({
-         method: 'DELETE',
-         url: `/todos/${id}`
-    }).then((response) => {
-        refreshTodos();
-    }).catch((error) => {
-        console.log('Error deleting todo:', error);
-    })
+    if (confirm("Are you sure you want to delete?") === true) {
+        $.ajax({
+            method: 'DELETE',
+            url: `/todos/${id}`
+       }).then((response) => {
+           refreshTodos();
+       }).catch((error) => {
+           console.log('Error deleting todo:', error);
+       })
+    }
 }
 
 function completeTodo(event) {
