@@ -77,10 +77,6 @@ td {
     text-align: center;
 }
 
-tr {
-
-}
-
 tr:nth-child(even) {
     background-color: var(--alt-color);
     border-style: none;
@@ -119,10 +115,6 @@ tbody tr:hover {
     background-color: bisque;
     padding: 1rem;
     margin: 1rem;
-}
-
-.complete-button {
-
 }
 
 .delete-button:hover {
