@@ -6,7 +6,9 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('GET request on /todos');
-    const queryString = `SELECT * FROM "todos"`;
+    const queryString = `
+        SELECT * FROM "todos"
+        ORDER BY "id" asc;`;
     pool.query(queryString)
         .then((response) => {
             res.send(response.rows);

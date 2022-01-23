@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script src="./vendor/jquery.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="https://kit.fontawesome.com/ee3da9c343.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>To-Dos</h1>
+    <h1><i class="fas fa-list"></i> To-Dos</h1>
     <div class="primary-container">
         <h2>Add To-Do</h2>
-        <input id="summary-input" />
-        <button id="add-to-do">Add To-Do</button>
+        <div class="input-container">
+            <input id="summary-input" />
+            <button id="add-to-do"><i class="far fa-plus-square"></i> Add</button>
+        </div>
     </div>
     <div class="primary-container">
         <h2>List</h2>
@@ -26,7 +29,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody id="todos-table">
+            <tbody id="todos-list">
     
             </tbody>
         </table>

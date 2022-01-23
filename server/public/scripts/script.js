@@ -5,8 +5,8 @@ function onReady(){
 
     // Set up click handlers
     $('#add-to-do').on('click', addTodo);
-    $('#todos-table').on('click', '.delete-button', deleteTodo);
-    $('#todos-table').on('click', '.complete-button', completeTodo);
+    $('#todos-list').on('click', '.delete-button', deleteTodo);
+    $('#todos-list').on('click', '.complete-button', completeTodo);
     // Get todo list from server
     refreshTodos();
 }
@@ -53,21 +53,23 @@ function completeTodo(event) {
 }
 
 function refreshTodos() {
-    $('#todos-table').empty();
+    $('#todos-list').empty();
     $.ajax({
         method: 'GET',
         url: "/todos"
     }).then((response) => {
         for(let item of response) {
             let todoSummary = `<td>${item.summary}</td>`;
+            let buttonIcon = `<i class="far fa-square complete-button" data-id="${item.id}"></i>`;
             if (item.is_complete) {
                 todoSummary = `<td class="complete">${item.summary}</td>`;
+                buttonIcon = `<i class="far fa-check-square complete-button" data-id="${item.id}"></i>`;
             }
-            $('#todos-table').append(`
+            $('#todos-list').append(`
                 <tr>
-                    <td><button class='complete-button' data-id="${item.id}">Complete</button></td>
+                    <td>${buttonIcon}</td>
                     ${todoSummary}
-                    <td><button class='delete-button' data-id="${item.id}">Delete</button></td>
+                    <td><i class="far fa-trash-alt delete-button" data-id="${item.id}"></i></td>
                 </tr>
             `)
         }
