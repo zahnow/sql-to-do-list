@@ -3,7 +3,7 @@ const pg = require('pg');
 // Setup PG to connect to the database
 const Pool = pg.Pool;
 const pool = new Pool({
-    database: 'weekend_todos', // the name of database, This can change!
+    database: 'process.env.DATABASE_NAME || weekend_todos', // the name of database, This can change!
     host: 'localhost', // where is your database?
     port: 5432, // the port for your database, 5432 is default for postgres
     max: 10, // how many connections (queries) at one time
